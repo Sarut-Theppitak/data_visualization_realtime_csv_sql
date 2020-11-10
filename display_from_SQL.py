@@ -65,7 +65,7 @@ def get_df(strdate,enddate,GOT_num,cols):
         
         insert_query = '''
                         SELECT *
-                        FROM [IOT].[dbo].[GOT_AKEMI#2]
+                        FROM [IOT].[dbo].[***********]
                         where (時間 BETWEEN \'''' + strdate +  '''\' AND \'''' + enddate + '''\') and (GOT_Number = \'''' + GOT_num + '\')'        
                
         cursor.execute(insert_query)
