@@ -19,19 +19,20 @@ from logging.handlers import TimedRotatingFileHandler
 
 
 #Constant values
-path = 'C:\\Users\\3978\\Desktop\\Iot\\ftproot\\No.1'
+path = ''    #pls insert your directory that contain the CSV file
 NO = 'NO.1'     # to display to user
 cols = ['時間','昇温室ファン','浸炭室ファン', '降温室ファン', '昇温室ローラー','浸炭室ローラー1', '浸炭室ローラー2','浸炭室ローラー3', '降温室ローラー', '油槽エレベータチェン']
 
 
 # set logging 
-
+# insert directory for logging
 logger = logging.getLogger("Rotating Log")
 logger.setLevel(logging.ERROR)
-handler = TimedRotatingFileHandler('C:\\Users\\3978\\Desktop\\AI tasks\\SDV\\try_logging.log',
+handler = TimedRotatingFileHandler('',
                                        when="H",
                                        interval=1,
                                        backupCount=10)
+
 
 s_format = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 handler.setFormatter(s_format)
