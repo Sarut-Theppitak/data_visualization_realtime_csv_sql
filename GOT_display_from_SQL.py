@@ -52,8 +52,8 @@ def update_data(gui_obj):
 #get df from SQL fuction
 def get_df(strdate,enddate,GOT_num,cols):
     
-    SQL_server = 'MSINT77'
-    SQL_database= 'IOT'
+    SQL_server = '*******'
+    SQL_database= '****'
     
     try: 
         conn = pyodbc.connect('Driver={SQL Server};\
