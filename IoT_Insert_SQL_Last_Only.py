@@ -7,18 +7,16 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 import pyodbc
 
-SQL_server = 'MSINT77'
-SQL_database= 'IOT'
-#path = 'C:\\Users\\3978\\Desktop\\Iot\\ftproot'
-path = 'C:\\inetpub\\ftproot'
+SQL_server = '******'
+SQL_database= '****'
+path = '***********'  # path of csv file
 cols = ['時間','昇温室ファン','浸炭室ファン', '降温室ファン', '昇温室ローラー','浸炭室ローラー1', '浸炭室ローラー2','浸炭室ローラー3', '降温室ローラー', '油槽エレベータチェン']
 
 # set logging 
 logger = logging.getLogger("Rotating Log")
 logger.setLevel(logging.ERROR)
-#C:\\Users\\3978\\Desktop\\AI tasks\\SDV\\try_logging.log
-#'C:\\inetpub\\ftproot\\log_SQL\\error_log.log'
-handler = TimedRotatingFileHandler('C:\\inetpub\\ftproot\\log_SQL\\error_log.log',
+#insert log file diratory
+handler = TimedRotatingFileHandler('************',
                                        when="H",
                                        interval=1,
                                        backupCount=10)
@@ -51,11 +49,11 @@ def insertdataFrameIntoTable(df,NO):
         cursor = conn.cursor()
         
         insert_query = '''
-                    INSERT INTO [IOT].[dbo].[GOT_AKEMI#2]
+                    INSERT INTO [IOT].[dbo].[********]
                       (時間, GOT_Number)
                     SELECT ? ,?
                     WHERE NOT EXISTS(SELECT 時間,GOT_Number
-                                        FROM [IOT].[dbo].[GOT_AKEMI#2]
+                                        FROM [IOT].[dbo].[********]
                                        WHERE 時間 = ? AND
                     				   GOT_Number = ?)
                '''
@@ -64,7 +62,7 @@ def insertdataFrameIntoTable(df,NO):
         conn.commit()       
         
         insert_query = '''
-                    UPDATE [IOT].[dbo].[GOT_AKEMI#2]
+                    UPDATE [IOT].[dbo].[**********]
                            SET 昇温室ファン = ? ,浸炭室ファン = ?,
                            降温室ファン = ? ,昇温室ローラー= ?,
                            浸炭室ローラー1 = ?,浸炭室ローラー2 = ?,
